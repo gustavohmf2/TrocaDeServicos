@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+		
+<h:head></h:head> 
+<body style="background-color:#5577AA"> 
+	
+	<div style="position:absolute;margin-left: 800px">
+		<p:graphicImage  width="120px" height="120px" library="img" name="trocaicon.png"/>
+		<p style="font-family: fantasy;font-size: 18px;color: white">Cadastre-se e colabore com essa ideia!</p>
+	</div>
+	
+	 <div style="position:relative;width:500px;margin-left:250px;margin-top:100px;margin-bottom: 50px">
+		 <h:form>
+		 	
+	        <p:panel id="panel" style="background-color:#FFDD44;" header="Cadastro">
+	        <p:messages id="msgs"/>
+	            <h:panelGrid columns="2">
+	                <p:outputLabel value="Nome : " />
+	               	<p:inputText value="#{usuarioController.usuario.nome}" />
+	               	<p:outputLabel value="Idade : " />
+	               	<p:inputText value="#{usuarioController.usuario.idade}" />
+	               	<p:outputLabel  value="CPF : " />
+	               	<p:inputText value="#{usuarioController.usuario.cpf}" />
+	               	<p:outputLabel  value="Cidade : " />
+	               	<p:inputText value="#{usuarioController.endereco.cidade}" />
+	               	<p:outputLabel  value="CEP : " />
+	               	<p:inputText value="#{usuarioController.endereco.cep}" />
+	               	<p:outputLabel  value="Bairro : " />
+	               	<p:inputText value="#{usuarioController.endereco.bairro}" />
+	               	<p:outputLabel  value="Rua : " />
+	               	<p:inputText value="#{usuarioController.endereco.rua}" />
+	               	<p:outputLabel  value="Complemento : " />
+	               	<p:inputText value="#{usuarioController.endereco.complemento}" />
+	               	<p:outputLabel  value="Numero : " />
+	               	<p:inputText value="#{usuarioController.endereco.numero}" />
+	               	<p:outputLabel  value="Telefone : " />
+	               	<p:inputText value="#{usuarioController.usuario.telefone}" />
+	               	<p:outputLabel  value="Email : " />
+	               	<p:inputText value="#{usuarioController.usuario.email}" />
+	               	<p:outputLabel  value="Login : " />
+	               	<p:inputText value="#{usuarioController.usuario.login}" />
+	               	<p:outputLabel  value="Senha : " />
+	               	<p:inputText value="#{usuarioController.usuario.senha}" />
+	             </h:panelGrid> 
+	             <p:commandButton actionListener="#{usuarioController.cadastrar}" value="cadastrar" update="panel" icon="ui-icon-check" />
+	                
+	   		</p:panel>
+	    </h:form>
+    </div>
+
+</body> 
+</html>

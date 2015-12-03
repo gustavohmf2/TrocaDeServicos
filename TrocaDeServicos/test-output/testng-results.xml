@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="1" total="3" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="4151" started-at="2015-11-19T18:57:42Z" finished-at="2015-11-19T18:57:46Z">
+    <groups>
+      <group name="grupoTeste">
+        <method signature="serviceGrupoTest.runTest1()[pri:0, instance:br.com.TrocaDeTarefas.Test.serviceGrupoTest@45c8e616]" name="runTest1" class="br.com.TrocaDeTarefas.Test.serviceGrupoTest"/>
+      </group> <!-- grupoTeste -->
+      <group name="grupoTeste2">
+        <method signature="serviceGrupoTest.runTest2()[pri:0, instance:br.com.TrocaDeTarefas.Test.serviceGrupoTest@45c8e616]" name="runTest2" class="br.com.TrocaDeTarefas.Test.serviceGrupoTest"/>
+      </group> <!-- grupoTeste2 -->
+      <group name="grupoTeste3">
+        <method signature="serviceGrupoTest.runTest3()[pri:0, instance:br.com.TrocaDeTarefas.Test.serviceGrupoTest@45c8e616]" name="runTest3" class="br.com.TrocaDeTarefas.Test.serviceGrupoTest"/>
+      </group> <!-- grupoTeste3 -->
+    </groups>
+    <test name="Default test" duration-ms="4151" started-at="2015-11-19T18:57:42Z" finished-at="2015-11-19T18:57:46Z">
+      <class name="br.com.TrocaDeTarefas.Test.serviceGrupoTest">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:br.com.TrocaDeTarefas.Test.serviceGrupoTest@45c8e616]" name="beforeClass" is-config="true" duration-ms="3296" started-at="2015-11-19T16:57:42Z" finished-at="2015-11-19T16:57:45Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClass -->
+        <test-method status="PASS" signature="runTest1()[pri:0, instance:br.com.TrocaDeTarefas.Test.serviceGrupoTest@45c8e616]" name="runTest1" duration-ms="300" started-at="2015-11-19T16:57:45Z" finished-at="2015-11-19T16:57:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runTest1 -->
+        <test-method status="PASS" signature="afterGroups()[pri:0, instance:br.com.TrocaDeTarefas.Test.serviceGrupoTest@45c8e616]" name="afterGroups" is-config="true" duration-ms="278" started-at="2015-11-19T16:57:46Z" finished-at="2015-11-19T16:57:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterGroups -->
+        <test-method status="FAIL" signature="runTest2()[pri:0, instance:br.com.TrocaDeTarefas.Test.serviceGrupoTest@45c8e616]" name="runTest2" duration-ms="6" started-at="2015-11-19T16:57:46Z" finished-at="2015-11-19T16:57:46Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [2] but found [3]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [2] but found [3]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:496)
+	at org.testng.Assert.assertEquals(Assert.java:125)
+	at org.testng.Assert.assertEquals(Assert.java:178)
+	at org.testng.Assert.assertEquals(Assert.java:188)
+	at br.com.TrocaDeTarefas.Test.serviceGrupoTest.runTest2(serviceGrupoTest.java:75)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:816)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1124)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:774)
+	at org.testng.TestRunner.run(TestRunner.java:624)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:359)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:354)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:312)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:261)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1215)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.run(TestNG.java:1048)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:112)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:205)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:176)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runTest2 -->
+        <test-method status="PASS" signature="runTest3()[pri:0, instance:br.com.TrocaDeTarefas.Test.serviceGrupoTest@45c8e616]" name="runTest3" duration-ms="195" started-at="2015-11-19T16:57:46Z" finished-at="2015-11-19T16:57:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runTest3 -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:br.com.TrocaDeTarefas.Test.serviceGrupoTest@45c8e616]" name="afterClass" is-config="true" duration-ms="1" started-at="2015-11-19T16:57:46Z" finished-at="2015-11-19T16:57:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClass -->
+      </class> <!-- br.com.TrocaDeTarefas.Test.serviceGrupoTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

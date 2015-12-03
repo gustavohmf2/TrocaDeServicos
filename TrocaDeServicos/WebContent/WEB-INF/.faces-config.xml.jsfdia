@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#views#telaUsuario.xhtml"
+  PATH="/views/telaUsuario.xhtml" SHAPE="77,113,0,0"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#cadastro.xhtml" PATH="/cadastro.xhtml"
+  SHAPE="287,40,0,0" model-entity="JSFProcessGroup" persistent="true"/>
+</PROCESS>
