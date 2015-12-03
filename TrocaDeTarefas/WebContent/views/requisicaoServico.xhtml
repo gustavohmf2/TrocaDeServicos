@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<body style="background-color:#5577AA"> 
+	
+	<div style="padding-top:200px;position:absolute">
+		
+		<p:panel header="Gustavo Henrique" style="position:absolute;width:150px" footer="23 anos, Rio Grande do Norte">
+			<p:graphicImage width="120px" height="120px" library="img" name="user.png"/>
+		</p:panel>
+	</div>
+	
+	<div style="width:600px;height:400px;margin-left:250px;padding-top:200px;position:relative">
+		<p:panel id="toggleable" toggleable="true"  toggleSpeed="500" closeSpeed="500"  style="background-color:#FFDD44" header="Cadastrar seu interesse!">
+			<h:form>
+				<h:panelGrid columns="2">
+					<p:outputLabel>Descrição</p:outputLabel>
+					<p:inputText value="#{painelController.requisicao.descricao}"></p:inputText>
+					<p:outputLabel>Período</p:outputLabel>
+					<p:inputText value="#{painelController.requisicao.periodo}"></p:inputText>
+					<p:outputLabel>Oferta</p:outputLabel>
+					<p:inputText value="#{painelController.requisicao.aferta}"></p:inputText>
+					<p:button  value="Ok"   style="width: 100px;height:50px;" ></p:button>
+					<p:button  value="Cancel"   style="width: 100px;height:50px;" ></p:button>
+				</h:panelGrid>
+			</h:form>
+		</p:panel> 
+	
+		<p:panel id="toggleable2" toggleable="true"  toggleSpeed="500" closeSpeed="500"  style="background-color:#FFDD44" header="Cadastrar seu Serviço!">
+			<h:form>
+				<h:panelGrid columns="2">
+					<p:outputLabel>Usuario</p:outputLabel>
+					<p:inputText value="#{servicoController.servico.usuario}"></p:inputText>
+					<p:outputLabel>descricao</p:outputLabel>
+					<p:inputText value="#{servicoController.servico.descricao}"></p:inputText>
+					
+					<p:commandButton actionListener="#{servicoController.cadastroDeServico()}" value="Cadastrar"/>
+				</h:panelGrid>
+			</h:form>
+		</p:panel> 
+
+	</div>
+</body> 
+</html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+ <managed-bean>
+  <managed-bean-name>usuarioControle</managed-bean-name>
+  <managed-bean-class>br.com.TrocaDeTarefas.Controller.UsuarioController</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>loginControle</managed-bean-name>
+  <managed-bean-class>br.com.TrocaDeTarefas.Controller.LoginController</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ <navigation-rule>
+	  <display-name>index</display-name>
+	  <from-view-id>/index.xhtml</from-view-id>
+	  <navigation-case>
+	  <from-action>#{loginControle.validaLogin}</from-action>
+	   <from-outcome>pass</from-outcome>
+	   <to-view-id>/views/telaUsuario.xhtml</to-view-id>
+	  </navigation-case>
+	  <navigation-case>
+	   <from-action>#{loginControle.validaLogin}</from-action>
+	   <from-outcome>pass</from-outcome>
+	   <to-view-id>/cadastro.xhtml</to-view-id>
+	  </navigation-case>
+ </navigation-rule>
+ <application>
+  	<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+ </application>
+</faces-config>

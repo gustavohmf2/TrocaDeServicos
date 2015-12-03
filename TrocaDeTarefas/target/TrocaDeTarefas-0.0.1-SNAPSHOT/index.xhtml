@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+	
+</h:head> 
+<body> 
+
+	<p:panel header="Login" style="height: 220px;width:380px;margin-top:210px;margin-left:480px">
+	  <h:form>
+		<h:panelGrid columns="2"> 
+			<p:outputLabel>Login</p:outputLabel>
+				<p:inputText value="#{loginControle.login}"></p:inputText> 
+			<p:outputLabel>Senha</p:outputLabel>
+				<p:password value="#{loginControle.senha}"></p:password>
+			<p:commandButton action="#{loginControle.validaLogin()}" value="Entrar" />
+			<p:outputLabel>Não possui cadastro? <h:outputLink value="cadastro.jsf">Cadastr-se!</h:outputLink></p:outputLabel>
+		</h:panelGrid>
+	  </h:form>
+	</p:panel>
+	
+</body> 
+</html>

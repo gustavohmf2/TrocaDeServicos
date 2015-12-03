@@ -1,0 +1,97 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<body style="background-color:#FFDD44"> 
+	<!-- Informacoes do usuario -->
+	<div style="padding-top:150px;position:absolute;">
+		
+ 		<p:panel header="Gustavo Henrique" style="width:150px" footer="23 anos, Rio Grande do Norte">
+			<p:graphicImage width="120px" height="120px" library="img" name="user.png"/>
+		</p:panel>
+	</div>
+	
+	<!-- <div style="position:relative;padding-top:150px;padding-left:200px; width:400px ;height:185px;">
+	</div> -->	
+	<div style="height:400px;margin-left:200px;padding-top:150px;position:relative">
+			
+			
+			<p:panel  id="true" toggleable="true"  toggleSpeed="500" closeSpeed="500" header="Criar Novo Grupo" style="background-color:#5577AA;">
+				<p:messages id="msgs"/>
+				<h:form>
+					<h:panelGrid columns="2">
+					<p:outputLabel style="color:black;">Nome do grupo:</p:outputLabel>
+						<p:inputText value="#{grupoController.grupo.nome}"/>
+					<p:outputLabel style="color:black;">Descrição:</p:outputLabel>
+						<p:inputText value="#{grupoController.grupo.descricao}"/>
+					</h:panelGrid>
+					<p:commandButton actionListener="#{grupoController.criarGrupo}" value="Criar"/>
+				
+				</h:form>
+			</p:panel>
+	
+		
+		<p:panel id="toggleable2" toggleable="true"  toggleSpeed="500" closeSpeed="500"  header="Meus grupos" style="background-color:#5577AA;">
+					
+				<h:panelGrid bgcolor="#5577AA" cellpadding="20px" columns="7" >
+				
+					
+					<h:dataTable  emptyMessage="Você não tem grupos no momento!" rendered="#{grupoController.listaGrupo != null}" value="#{grupoController.listaGrupo}" var="grupo">
+
+						
+						<p:column >	
+							<h:form>
+									<h:commandLink style="color:black;margin-right:50px" value="Visitar grupo" action="grupo/acessoGrupo?faces-redirect=true" />
+									<f:param name="grupo" value="#{grupo.nome}"/>
+									<f:param name="usuario" value="Gustavo"/>
+							</h:form>		
+						</p:column>		
+						
+						<p:column>
+							<f:facet name="header">
+								<h:outputText style="color:black;margin-right:50px" value="Moderador"/>
+							</f:facet>
+							<h:outputText style="color:black;"  value="#{grupo.moderador}"/>
+						</p:column>
+						
+						<p:column >
+							<f:facet name="header">
+								<h:outputText style="color:black;" value="Qtd usuarios"/>
+							</f:facet>
+							<h:outputText style="color:black;margin-left:50px" value="#{grupo.qtdUsuario}"/>
+						</p:column>
+						<p:column >
+							<f:facet name="header">
+								<h:outputText style="color:black;" value="Descricção"/>
+							</f:facet>
+							<h:outputText style="color:black;" value="#{grupo.descricao}"/>
+						</p:column>
+						<h:column style="margin-left:50px">
+							<h:form>
+							
+								<p:commandButton style="margin-left:50px;font-size:12px;widht:15px;height:60px" action="#{grupoController.removerGrupo}"  value="Apagar grupo" />
+							</h:form>
+						</h:column>
+						<h:column style="margin-left:50px">
+							<h:form>
+								<p:commandButton style="margin-left:50px;font-size:12px;widht:15px;height:60px" action="#{grupoController.editarGrupo()}"  value="Editar grupo" />
+							</h:form>
+						</h:column>
+						<h:column style="margin-left:50px">
+							<h:form>
+								<p:commandButton style="margin-left:50px;font-size:12px;widht:15px;height:60px" action="#{grupoController.editarGrupo()}"  value="Editar grupo" />
+							</h:form>
+						</h:column>
+						
+					</h:dataTable>
+				</h:panelGrid>
+		</p:panel>
+
+		
+	</div>
+</body> 
+</html>

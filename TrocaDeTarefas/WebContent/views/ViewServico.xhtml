@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+	<h:head>
+	</h:head> 
+
+	<body> 
+		<h:form id="form" >
+    		
+    		<p:dataGrid var="tarefa" value="#{servico.tarefas}" columns="3"
+        	rows="12" paginator="true" id="servicos" 
+        	paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+        	rowsPerPageTemplate="6,12,16">
+ 			
+ 			<f:facet name="header">Serviços Disponivéis</f:facet>
+        
+            	<p:panelGrid id="tarefas" columns="1" style="width:300px">
+                	<f:facet name="header">
+    			  		<h:outputText value="#{tarefa.nome}"/>            			
+    			  	</f:facet>        
+					
+					<h:panelGrid columns="1"  style="width:300px;text-align:justify">
+						<p:commandLink action="#{servico.showAvaliacao()}">
+							<f:setPropertyActionListener value="#{tarefa}" target="#{servico.servicoSelecionado}" />  
+    			  			<h:graphicImage value="/resources/img/calourada.jpg" width="100%" height="200px"/>
+    			  		</p:commandLink>
+    			  	</h:panelGrid>
+    			  	
+    			  	
+    			  	<h:panelGrid columns="3" style="width:300px;text-align:center">
+    			  		<p:commandLink  title="Participar Desta Tarefa" style="text-align:center" onclick="PF('dlg1').show();" action="#{servico.participar(tarefa)}" >
+                   			<h:outputText value="Participar" style="text-align:center" />                   		
+                		</p:commandLink> 
+                		<p:commandLink action="#{servico.showDetalhes()}" title="Ver Detalhes Sobre Essa Tarefa" style="text-align:center"  >
+							<f:setPropertyActionListener value="#{tarefa}" target="#{servico.servicoSelecionado}" />
+                   			<h:outputText value="Detalhes" style="text-align:center" />                   		
+                		</p:commandLink> 
+                	</h:panelGrid>	
+                </p:panelGrid>
+                <p:resizable for="tarefas" minWidth="300" maxWidth="300" minHeight="200" maxHeight="200" />      	
+     
+
+                	
+                	<p:dialog header="Notificação" widgetVar="dlg1" minHeight="40" >
+    					<h:outputText value="Você agora está participando desta tarefa!" />
+					</p:dialog>
+    		
+    		</p:dataGrid>
+ 		
+ 		
+	</h:form>
+	</body> 
+</html>

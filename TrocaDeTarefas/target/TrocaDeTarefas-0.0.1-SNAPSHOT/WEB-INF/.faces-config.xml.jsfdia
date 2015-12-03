@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#index.xhtml" PATH="/index.xhtml"
+  SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#index.xhtml:0" NAME="item"
+   PATH="/index.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="pass:#{loginControle.validaLogin}:#views#telaUsuario.xhtml"
+    NAME="output" PATH="/views/telaUsuario.xhtml"
+    TARGET="rules:#views#telaUsuario.xhtml"
+    TITLE="#{loginControle.validaLogin}:pass" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="pass:#{loginControle.validaLogin}:#cadastro.xhtml"
+    NAME="output1" PATH="/cadastro.xhtml" TARGET="rules:#cadastro.xhtml"
+    TITLE="#{loginControle.validaLogin}:pass" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#views#telaUsuario.xhtml"
+  PATH="/views/telaUsuario.xhtml" SHAPE="77,113,0,0"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#cadastro.xhtml" PATH="/cadastro.xhtml"
+  SHAPE="287,40,0,0" model-entity="JSFProcessGroup" persistent="true"/>
+</PROCESS>

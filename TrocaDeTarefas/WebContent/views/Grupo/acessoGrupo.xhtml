@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+
+<h:head>
+
+	<f:metadata>
+        <f:viewParam name="grupo" value="#{grupoController.grupo.nome}" />
+        <f:viewParam name="usuario" value="#{usuarioController.usuario.nome}" />
+    </f:metadata>
+
+</h:head> 
+
+<body style="background-color:#FFDD44"> 
+	<!-- Informacoes do usuario -->
+	<div style="padding-top:150px;position:absolute;">
+		
+		<p:panel header="#{usuarioController.usuario.nome}"  style="width:150px" footer="23 anos, Rio Grande do Norte">
+			<p:graphicImage width="120px" height="120px" library="img" name="user.png"/>
+		</p:panel>
+	</div>
+	
+	<div style="height:100px;margin-left:200px;padding-top:150px;position:relative">
+			<p:panel header="#{grupoController.grupo.nome}"></p:panel>
+	</div>
+	
+	<div style="height:400px;margin-left:200px;padding-top:0px;position:relative">	
+			<p:panel id="toggleable3" toggleable="true"  toggleSpeed="500" closeSpeed="500"  header="Adicionar usuario ao grupo" style="background-color:#5577AA">
+			
+				<h:panelGrid columns="2" bgcolor="#5577AA">
+					<h:form>
+						
+						<p:outputLabel>login:</p:outputLabel>
+						<p:inputText value="#{grupoController.login}" />
+						<p:outputLabel>login:</p:outputLabel>
+						<p:inputText style="display: none"  value="#{grupoController.grupoNome}" autocomplete="#{grupo}"/>
+						<p:commandButton style="margin-left:10px;margin-top:20px;width:95px;font-size:12px;" actionListener="#{grupoController.adicionarParticipante()}" value="Adicionar Participante" />					
+					
+					</h:form>
+				</h:panelGrid>
+			</p:panel>
+			
+			<p:panel id="toggleable4" toggleable="true"  toggleSpeed="500" closeSpeed="500"  header="Participantes" style="background-color:#5577AA">
+			
+				<h:panelGrid columns="2" bgcolor="#5577AA">
+					<h:dataTable emptyMessage="Não há usuários!" rendered="#{grupoController.listaUsuario} != null}" value="#{grupoController.listaUsuario}" var="participante">
+							
+						<p:column >
+							<f:facet name="header">
+								<h:outputText value="Usuário"/>
+							</f:facet>
+							<h:outputText value="#{participante.login}"/>
+						</p:column>	
+						
+						<h:column style="margin-left:50px">
+							<h:form>
+								<p:commandButton style="margin-left:50px;font-size:12px;widht:15px;height:60px" action="#{grupoController.removerUsuario()}"  value="Remover" />
+							</h:form>
+						</h:column>
+						
+					</h:dataTable>
+				</h:panelGrid>
+			</p:panel>
+			
+			<p:panel id="toggleable5" toggleable="true"  toggleSpeed="500" closeSpeed="500"  header="Mural de mensagegens" style="background-color:#5577AA">
+			
+				<h:panelGrid columns="2" bgcolor="#5577AA">
+					
+				</h:panelGrid>
+			</p:panel>
+	</div>
+
+		
+</body> 
+</html>
+

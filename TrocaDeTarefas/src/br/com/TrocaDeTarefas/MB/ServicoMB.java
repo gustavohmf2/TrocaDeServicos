@@ -1,0 +1,134 @@
+package br.com.TrocaDeTarefas.MB;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+import org.primefaces.context.RequestContext;
+import br.com.TrocaDeTarefas.Model.Avaliacao;
+import br.com.TrocaDeTarefas.Model.Servico;
+import br.com.TrocaDeTarefas.Model.Usuario;
+import br.com.TrocaDeTarefas.Service.ServiceServico;
+
+@ManagedBean(name = "servico")
+@SessionScoped
+public class ServicoMB implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private List<Servico> Tarefas;
+
+	private Usuario Usuarioativo;
+	private Avaliacao avaliacaouser = new Avaliacao();
+	private Servico servicoSelecionado;
+
+	public Servico getServicoSelecionado() {
+		return servicoSelecionado;
+	}
+
+	public void setServicoSelecionado(Servico servicoSelecionado) {
+		this.servicoSelecionado = servicoSelecionado;
+	}
+	public void SelecionarTarefa(Servico serv){		
+		servicoSelecionado = serv;
+	
+	}
+	public Usuario getUsuarioativo() {
+		return Usuarioativo;
+	}
+
+	public void setUsuarioativo(Usuario usuarioativo) {
+		Usuarioativo = usuarioativo;
+	}
+
+	public Avaliacao getAvaliacaouser() {
+		return avaliacaouser;
+	}
+	
+	public void showAvaliacao() {
+		Map<String,Object> options = new HashMap<String, Object>();
+		options.put("resizable", false);
+		options.put("modal",true);
+		options.put("width", 900);
+        options.put("height", 600);
+        options.put("contentWidth", "100%");
+        options.put("contentHeight", "100%");
+        RequestContext.getCurrentInstance().openDialog("AvaliazaoServico", options, null);
+    }
+	public void showDetalhes() {
+		Map<String,Object> options = new HashMap<String, Object>();
+		options.put("resizable", false);
+		options.put("modal",true);
+		options.put("width", 900);
+        options.put("height", 600);
+        options.put("contentWidth", "100%");
+        options.put("contentHeight", "100%");
+        RequestContext.getCurrentInstance().openDialog("ServicoDetalhado", options, null);
+    }
+	
+	public void setAvaliacaouser(Avaliacao avaliacaouser) {
+		this.avaliacaouser = avaliacaouser;
+	}
+
+	public void participar(Servico serv) {
+
+		ArrayList<Usuario> aux = new ArrayList<Usuario>();
+		if (serv.getParticipantes() != null) {
+			aux = serv.getParticipantes();
+		}
+
+		if (existUser(aux, Usuarioativo) == false) {
+			aux.add(Usuarioativo);
+		}
+		serv.setParticipantes(aux);
+		new ServiceServico().AtualizarServico(serv);
+
+	}
+
+	private boolean existUser(ArrayList<Usuario> aux, Usuario user) {
+
+		for (Usuario participante : aux) {
+			if (participante.getCpf().equals(user.getCpf())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	public List<Avaliacao> getAvalicao() {
+		ArrayList<Avaliacao> aval = new ArrayList<Avaliacao>();
+//		aval = servicoSelecionado.getAvaliacao();
+		Avaliacao ei = new Avaliacao();
+		ei.setComentario("asdasdasdasdasd");
+		aval.add(ei);
+		
+		return aval;
+	}
+	@PostConstruct
+	public void init() {
+		Usuarioativo = new Usuario();
+		Usuarioativo.setNome("Quepardo");
+		Usuarioativo.setCpf("342323");
+		Usuarioativo.setEmail("Anderson@yahoo.com.br");
+		Usuarioativo.setIdade(23);
+		Usuarioativo.setLogin("Anderson");
+		Usuarioativo.setSenha("3456");
+		Usuarioativo.setTelefone("70251");
+		Tarefas = new ServiceServico().findALL();
+	}
+
+	public List<Servico> getTarefas() {
+		return Tarefas;
+	}
+
+	public void setTarefas(List<Servico> tarefas) {
+		Tarefas = tarefas;
+	}
+
+}

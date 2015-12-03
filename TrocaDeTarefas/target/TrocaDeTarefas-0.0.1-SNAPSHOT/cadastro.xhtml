@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+		
+<h:head></h:head> 
+<body> 
+	 <h:form>
+        <p:panel header="Cadastro">
+            <h:panelGrid columns="2">
+                <p:outputLabel value="Nome : " />
+               	<p:inputText value="#{usuarioControle.user.nome}" />
+               	<p:outputLabel value="Idade : " />
+               	<p:inputText value="#{usuarioControle.user.idade}" />
+               	<p:outputLabel  value="CPF : " />
+               	<p:inputText value="#{usuarioControle.user.cpf}" />
+               	<p:outputLabel  value="Endereço : " />
+               	<p:inputText value="#{usuarioControle.user.endereco}" />
+               	<p:outputLabel  value="Telefone : " />
+               	<p:inputText value="#{usuarioControle.user.telefone}" />
+               	<p:outputLabel  value="Email : " />
+               	<p:inputText value="#{usuarioControle.user.email}" />
+               	<p:outputLabel  value="Login : " />
+               	<p:inputText value="#{usuarioControle.user.login}" />
+               	<p:outputLabel  value="Senha : " />
+               	<p:inputText value="#{usuarioControle.user.senha}" />
+             </h:panelGrid> 
+               <p:commandButton action="#{usuarioControle.Cadastrar()}" value="cadastrar" />
+                
+   </p:panel>
+    </h:form>
+
+</body> 
+</html>

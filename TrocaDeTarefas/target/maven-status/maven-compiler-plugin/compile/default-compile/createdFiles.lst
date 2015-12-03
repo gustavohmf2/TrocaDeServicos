@@ -1,0 +1,14 @@
+br\com\TrocaDeTarefas\Model\Requisicao.class
+br\com\TrocaDeTarefas\Controller\LoginController.class
+br\com\TrocaDeTarefas\DAO\IUsuarioDAO.class
+br\com\TrocaDeTarefas\Model\Servico.class
+br\com\TrocaDeTarefas\DAO\GenericDAOImplements.class
+br\com\TrocaDeTarefas\Model\Endereco.class
+br\com\TrocaDeTarefas\Model\Usuario.class
+br\com\TrocaDeTarefas\DAO\UsuarioDAO.class
+br\com\TrocaDeTarefas\Model\Avaliacao.class
+br\com\TrocaDeTarefas\Model\Grupo.class
+br\com\TrocaDeTarefas\Model\Favorito.class
+br\com\TrocaDeTarefas\SpringMongoConfig.class
+br\com\TrocaDeTarefas\Controller\UsuarioController.class
+br\com\TrocaDeTarefas\DAO\GenericDAO.class

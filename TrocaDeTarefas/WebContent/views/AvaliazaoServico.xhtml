@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"> 
+
+	<h:head>
+	</h:head> 
+
+	<body> 
+		<h:form rendered="#{servico.servicoSelecionado != null}"  >    	
+        	<p:dataScroller value="#{servico.servicoSelecionado.avaliacao}" var="avaliacao" chunkSize="10" mode="inline"> 
+        		
+				<h:panelGrid columns="2">
+					<p:column>
+        				<h:graphicImage value="/resources/img/quepardo.jpg" height="100px"/>
+        			</p:column>
+        			<p:column>
+        				<h:panelGrid width="450px">
+        					<h:panelGrid columns="2">
+        						<h:outputText value="#{avaliacao.usuario.nome} - " style="text-align:left;font-weight:bold"/>  
+        						<p:rating value="#{avaliazao.media}" rendered="#{avaliacao.estrelas == 0}"  readonly="true" />
+        						<p:rating value="#{avaliacao.estrelas}" rendered="#{avaliacao.estrelas != 0}"  readonly="true" />     						
+        					</h:panelGrid>
+        					<h:outputText value="#{avaliacao.comentario}" style="text-align:left |justify"/>
+						</h:panelGrid>
+					</p:column>
+				</h:panelGrid>
+				  					
+			</p:dataScroller>
+			<h:panelGrid columns="2">
+				<h:panelGrid >
+					<p:rating value="#{avaliazao.comentario.estrelas}"/>
+					<h:inputTextarea value="#{avaliazao.comentario.comentario}" style="height:100px" cols="50"/>			
+				</h:panelGrid>
+				<h:commandButton action="#{avaliazao.avaliar(servico.servicoSelecionado)}" value="Comentar">
+					<f:setPropertyActionListener value="#{servico.usuarioativo}" target="#{avaliazao.comentario.usuario}" />
+				</h:commandButton>
+			</h:panelGrid>
+	</h:form>
+	</body> 
+</html>
