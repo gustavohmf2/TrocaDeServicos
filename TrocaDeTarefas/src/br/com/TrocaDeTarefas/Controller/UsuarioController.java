@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import br.com.TrocaDeTarefas.Filtros.SessionContext;
 import br.com.TrocaDeTarefas.Model.Endereco;
 import br.com.TrocaDeTarefas.Model.Usuario;
 import br.com.TrocaDeTarefas.Service.ServiceUsuario;
@@ -16,11 +17,18 @@ import br.com.TrocaDeTarefas.Service.ServiceUsuario;
 public class UsuarioController {
 	
 	
-	ServiceUsuario servicoUsuario = new ServiceUsuario() ;
+	ServiceUsuario servicoUsuario = new ServiceUsuario();
+	SessionContext session;
 	Endereco endereco = new Endereco();
 	Usuario usuario = new Usuario();
 	String msg = new String();
 	
+	
+	
+	public UsuarioController(){
+		
+		session = SessionContext.getInstance();
+	}
 	
 	public String getMsg() {
 		return msg;
@@ -59,12 +67,15 @@ public class UsuarioController {
 
 
 	public Usuario getUsuario() {
-		return usuario;
+		
+		return (Usuario)session.getAtribute("usuario");
 	}
 
 
 
 	public void setUsuario(Usuario usuario) {
+		
+		
 		this.usuario = usuario;
 	}
 

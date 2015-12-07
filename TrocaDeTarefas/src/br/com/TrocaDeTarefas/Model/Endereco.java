@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Endereco {
 	
-	@Id
+	
 	private int idEndereco;
 	private String rua;
 	private int numero;

@@ -10,14 +10,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Grupo {
 	
-	@Id
+	
 	private String idGrupo;
 	private String nome;
 	private String moderador;
 	private String descricao;
-	@DBRef
 	private List<Usuario> usuario = new ArrayList<Usuario>();
-	@DBRef
 	private MuralGrupo mural;
 	private int qtdUsuario;
 	

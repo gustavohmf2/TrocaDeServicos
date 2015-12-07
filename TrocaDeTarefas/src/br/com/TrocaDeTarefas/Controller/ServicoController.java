@@ -11,16 +11,28 @@ import br.com.TrocaDeTarefas.Model.Endereco;
 import br.com.TrocaDeTarefas.Model.Servico;
 import br.com.TrocaDeTarefas.Model.Usuario;
 import br.com.TrocaDeTarefas.Service.ServiceServico;
+import br.com.TrocaDeTarefas.Service.ServiceUsuario;
 
 @ManagedBean(name="servicoController")
 @SessionScoped
 public class ServicoController {
 
-	Servico servico = new Servico();
-	ServiceServico servicoS = new ServiceServico();
+	Servico servico;
+	Usuario usuario;
+	String login;
+	
+	ServiceUsuario servicoU;
+	ServiceServico servicoS;
 	@SuppressWarnings("rawtypes")
 	DataModel listaServico;
 	
+	public ServicoController(){
+		
+		servico = new Servico();
+		usuario = new Usuario();
+		servicoU = new ServiceUsuario();
+		servicoS = new ServiceServico();
+	}
 	
 	public Servico getServico() {
 		return servico;
@@ -28,41 +40,29 @@ public class ServicoController {
 
 
 
+	public DataModel getListaServico() {
+		
+		List<Servico> lista = servicoS.findALL();
+   		listaServico = new ListDataModel(lista);
+   		return listaServico;
+	
+	}
+
+	public void setListaServico(DataModel listaServico) {
+		this.listaServico = listaServico;
+	}
+
 	public void setServico(Servico servico) {
 		this.servico = servico;
 	}
 	
     
-    @SuppressWarnings({ "rawtypes", "unchecked" })
-   	public DataModel ListaServicos(){
-   		
-   		List<Servico> lista = new ServiceServico().findALL();
-   		listaServico = new ListDataModel(lista);
-   		return listaServico;
-   	}
-
+  
 
 	public void cadastroDeServico(){
     	
     	System.out.println("aqui");
-    	Usuario aux = new Usuario();
-    	Endereco end = new Endereco();
     	
-    	end.setBairro("azul");
-    	end.setCep("12323542");
-    	end.setCidade("Natal");
-    	end.setComplemento("UFRN");
-    	end.setNumero(8);
-    	end.setRua("Rua das Palmeiras");
-    	end.setIdEndereco(2);
-    	
-    	aux.setNome("Teste1");
-    	aux.setCpf("1357902");
-    	aux.setEmail("teste@gmail.com");
-    	aux.setIdade(23);
-    	aux.setLogin("teste");
-    	aux.setSenha("123456");
-    	aux.setEndereco(end);
     	servico.setUsuario(aux);
     	
     	servicoS.CadastrarServico(servico);

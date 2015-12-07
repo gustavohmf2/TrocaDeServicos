@@ -14,7 +14,7 @@ import br.com.TrocaDeTarefas.Model.Usuario;
 public class ServiceUsuario implements IServiceUsuario {
 
 	
-	UsuarioDAO usuarioDao;
+	UsuarioDAO usuarioDao = new UsuarioDAO();
 	String msgError;
 	@Override
 	public Usuario buscarUsuarioId(String cpf) {
@@ -31,7 +31,7 @@ public class ServiceUsuario implements IServiceUsuario {
 	}
 	@Override
 	public void removerUsuario(Usuario usuario){
-		System.out.println("removendo usuário, "+ usuario.getCpf()+"!");
+		System.out.println("removendo usuario, "+ usuario.getCpf()+"!");
 		 usuarioDao.removerUsuario(usuario.getCpf());
 	}
 	@Override
@@ -44,7 +44,7 @@ public class ServiceUsuario implements IServiceUsuario {
 		
 		return  usuarioDao.listar();
 	}
-
+	
 
 	public UsuarioDAO getUsuarioDao() {
 		return (UsuarioDAO) usuarioDao;

@@ -8,9 +8,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class MuralGrupo {
 
 	
-	@Id
+	
 	private String idMural;
-	@DBRef
 	private Anotacao anotacao;
 	
 	public String getIdMural() {

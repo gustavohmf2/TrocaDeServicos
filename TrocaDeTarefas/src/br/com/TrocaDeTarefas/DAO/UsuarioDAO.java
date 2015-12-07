@@ -2,6 +2,8 @@ package br.com.TrocaDeTarefas.DAO;
 
 
 
+import java.util.List;
+
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
@@ -53,5 +55,6 @@ public class UsuarioDAO extends GenericDAOImplements<Usuario> implements IUsuari
 			me.printStackTrace();
 		}
 	}
+	
 
 }

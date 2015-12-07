@@ -4,6 +4,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import br.com.TrocaDeTarefas.DAO.UsuarioDAO;
+import br.com.TrocaDeTarefas.Filtros.SessionContext;
+import br.com.TrocaDeTarefas.Model.Usuario;
 
 
 @ManagedBean(name="loginController")
@@ -12,6 +14,13 @@ public class LoginController {
 
 	private String login;
 	private String senha;
+	private SessionContext session;
+	
+	public LoginController(){
+		
+		session = SessionContext.getInstance();
+		
+	}
 	
 	public String getLogin() {
 		return login;
@@ -32,13 +41,24 @@ public class LoginController {
 	public String validaLogin(){
 		
 		UsuarioDAO dao = new UsuarioDAO();
-		String loginValidation = dao.buscarPorId(login).getLogin();
-		String senhaValidation = dao.buscarPorId(login).getLogin();
+		System.out.println("Validando...");
 		
-		if(loginValidation == login && senhaValidation == senha){
-			return "pass";
+		Usuario userTemp = dao.buscarUsuarioPorLogin(login);
+		
+		
+		if(userTemp.getLogin().equals(login) && userTemp.getSenha().equals(senha)){
+			
+			System.out.println("Logando..");
+			session.setAtribute("usuario", userTemp);
+			session.setAtribute("logado", true);
+			
+			return "/views/telaUsuario.jsf?faces-redirect=true";
+			
 		}else{
-			return "block";
+			
+			session.setAtribute("msg", "login ou senha inválido!");
+			
+			return "index.jsf?faces-redirect=true";
 		}
 			
 	}

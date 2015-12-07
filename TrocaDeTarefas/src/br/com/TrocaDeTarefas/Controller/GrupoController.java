@@ -11,6 +11,7 @@ import javax.faces.model.ListDataModel;
 
 import com.mongodb.MongoException;
 
+import br.com.TrocaDeTarefas.Filtros.SessionContext;
 import br.com.TrocaDeTarefas.Model.Anotacao;
 import br.com.TrocaDeTarefas.Model.Grupo;
 import br.com.TrocaDeTarefas.Model.MuralGrupo;
@@ -22,35 +23,52 @@ import br.com.TrocaDeTarefas.Service.ServiceUsuario;
 @SessionScoped
 public class GrupoController {
 		
-	Usuario usuario = new Usuario();
-	Grupo grupo = new Grupo();
-	MuralGrupo mural = new MuralGrupo();
-	Anotacao anotacao = new Anotacao();
+	Usuario usuario;
+	Grupo grupo;
+	MuralGrupo mural;
+	Anotacao anotacao;
+	SessionContext session;
+
+	GrupoService service;
+	ServiceUsuario uService;
+	String login;
+	String grupoNome;
 
 	@SuppressWarnings("rawtypes")
 	DataModel listaGrupo;
 	@SuppressWarnings("rawtypes")
 	DataModel listaUsuario;
 	
-	GrupoService service = new GrupoService();
-	ServiceUsuario uService = new ServiceUsuario();
-	String login =  new String();
-	String grupoNome =  new String();
-
+	public GrupoController(){
+		
+		session = SessionContext.getInstance();
+		service = new GrupoService();
+		uService = new ServiceUsuario();
+		login =  new String();
+		grupoNome =  new String();
+		usuario = new Usuario();
+		grupo = new Grupo();
+		mural = new MuralGrupo();
+		anotacao = new Anotacao();
+	}
+	
+	
 	public String getGrupoNome() {
 		return grupoNome;
 	}
+	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public DataModel getListaUsuario() {
 		
 		listaUsuario = null;
 		try{
-			Usuario aux = uService.buscarUsuarioPorLogin(login);
 			
-			List<Usuario> lista = uService.listarUsuarios();
-			listaUsuario = new ListDataModel(lista);
+			Grupo aux = (Grupo) session.getAtribute("grupoAcessado");		
+			listaUsuario = new ListDataModel(aux.getUsuario());
 			return listaUsuario;
+
 		}catch(ExceptionInInitializerError e){
+		
 			e.printStackTrace();
 			return listaUsuario;
 		}
@@ -108,8 +126,10 @@ public class GrupoController {
 			idGrupo += '1';
 		}
 		try{
-			grupo.setModerador("123456789");
-			grupo.setUsuario(aux);
+			
+			Usuario userTemp = (Usuario) session.getAtribute("usuario"); 
+			grupo.setModerador(userTemp.getCpf());
+			grupo.setUsuario(userTemp);
 			grupo.setIdGrupo(idGrupo);
 			grupo.setQtdUsuario(3);
 			System.out.println(service.criarGrupo(grupo));
@@ -138,11 +158,24 @@ public class GrupoController {
 	}
 	
 	public void removerUsuario(){
-		System.out.println("aqui!");
+		
 		try{
+			
+			Grupo grupoTemp = (Grupo) session.getAtribute("grupoAcessado");
 			Usuario usuarioTemp = (Usuario)(listaUsuario.getRowData());
-			System.out.println(usuarioTemp.getCpf());
-			uService.removerUsuario(usuarioTemp);
+			int count = 0;
+			
+			for(Usuario u: grupoTemp.getUsuario()){
+				
+				if(u.getCpf().equals(grupoTemp.getUsuario().get(count).getCpf())){
+					
+					grupoTemp.getUsuario().remove(count);
+				}
+				count++;
+			}
+			
+			service.editarGrupo(grupoTemp);
+			
 		}catch(MongoException me){
 			me.printStackTrace();
 		}
@@ -151,14 +184,24 @@ public class GrupoController {
 	
 	public void adicionarParticipante(){
 		
-		System.out.println("aqui");
-		System.out.println(login+" - "+grupoNome);
-		Grupo aux = service.buscarGrupo(grupoNome);
-		String idAux = aux.getIdGrupo();
-		System.out.println(idAux+" - "+aux.getIdGrupo());
-		service.adicionarParticipante(uService.buscarUsuarioPorLogin(login), aux);
+		
+		Grupo grupoTemp = (Grupo) session.getAtribute("grupoAcessado");
+		service.adicionarParticipante(uService.buscarUsuarioPorLogin(login), grupoTemp);
 		
 		
+	}
+	
+	public String acessarGrupo(){
+		
+		Grupo grupoTemp = (Grupo)(listaGrupo.getRowData());
+		session.setAtribute("grupoAcessado", grupoTemp);
+		return "/views/Grupo/acessoGrupo.jsf?faces-redirect=true";
+		
+	}
+	
+	public Grupo grupoAcessado(){
+		
+		return (Grupo) session.getAtribute("grupoAcessado");
 	}
 
 	public Grupo getGrupo() {

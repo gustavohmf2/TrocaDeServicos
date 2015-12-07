@@ -14,22 +14,8 @@
 	<bean class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
 	</bean>
-	 
-	<bean id="usuario" class="br.com.TrocaDeTarefas.Model.Usuario"/>
 	
 	
-	<bean id="genericDao" class="br.com.TrocaDeTarefas.DAO.GenericDAOImplements">
-	
-	</bean>
-	 	
-	<bean id="usuarioDao" class="br.com.TrocaDeTarefas.DAO.UsuarioDAO">
-	</bean>
-	<!--
-	<bean id="serviceUsuario" class="br.com.TrocaDeTarefas.ServiceUsuario">
-		<property name="usuarioDao" ref="usuarioDao"></property>
-	</bean>
-	
-	 <mongo:repositories base-package="br.com.TrocaDeTarefas.DAO"/> -->
 	
 	
 	

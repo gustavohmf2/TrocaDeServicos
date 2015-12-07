@@ -8,10 +8,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Anotacao {
 
 	
-	@Id
+	
 	public int idAnotacao;
 	public String anotacao;
-	@DBRef
 	public String Usuario;
 	
 	public int getIdAnotacao() {

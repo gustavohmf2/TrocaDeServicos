@@ -10,7 +10,7 @@
 	<!-- Informacoes do usuario -->
 	<div style="padding-top:150px;position:absolute;">
 		
- 		<p:panel header="Gustavo Henrique" style="width:150px" footer="23 anos, Rio Grande do Norte">
+ 		<p:panel header="#{usuarioController.usuario.nome}" style="width:150px" footer="#{usuarioController.usuario.idade} anos, Rio Grande do Norte">
 			<p:graphicImage width="120px" height="120px" library="img" name="user.png"/>
 		</p:panel>
 	</div>
@@ -45,9 +45,8 @@
 						
 						<p:column >	
 							<h:form>
-									<h:commandLink style="color:black;margin-right:50px" value="Visitar grupo" action="grupo/acessoGrupo?faces-redirect=true" />
-									<f:param name="grupo" value="#{grupo.nome}"/>
-									<f:param name="usuario" value="Gustavo"/>
+									<h:commandLink style="color:black;margin-right:50px" value="Visitar grupo" action="#{grupoController.acessarGrupo()}" />
+									
 							</h:form>		
 						</p:column>		
 						

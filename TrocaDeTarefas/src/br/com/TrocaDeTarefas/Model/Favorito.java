@@ -9,7 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Favorito {
 
 	private int idFavorito;
-	@DBRef
 	private List<Servico> servico;
 	private String comentario;
 	

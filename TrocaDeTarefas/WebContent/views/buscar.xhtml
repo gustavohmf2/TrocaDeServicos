@@ -16,49 +16,69 @@
         <p:tab id="usuario" title="Usuarios">
             <p:panel header="Lista de usuários" style="background-color:#FFDD44">
           	
-                    <p:panelGrid columns="4">
-                    	<h:dataTable emptyMessage="Você não tem grupos no momento!" value="#{painelController.ListaUsuarios()}" var="usuario">
+                    <h:panelGrid bgcolor="#5577AA" cellpadding="20px" columns="4" > 
+                    
+                    	<h:dataTable emptyMessage="Você não tem grupos no momento!" value="#{painelController.listaUsuario}" var="usuario">
 						<p:column id="Nome" headerText="Nome">
-							<h:outputText value="#{usuario.nome}" />
+							<f:facet name="header">
+								<h:outputText style="color:black;" value="Nome"/>
+							</f:facet>
+							<h:outputText style="color:black;"  value="#{usuario.nome}" />
 						</p:column>
 						
-						<p:column headerText="Moderador">
-							<h:outputText value="#{usuario.email}"/>
+						<p:column headerText="">
+							<f:facet name="header">
+								<h:outputText style="color:black;" value="Email"/>
+							</f:facet>
+							<h:outputText style="color:black;" value="#{usuario.email}"/>
 						</p:column>
 						
-						<p:column headerText="Quantidade de Usuários">
+						<p:column headerText="">
+							<f:facet name="header">
+								<h:outputText style="color:black;" value="Idade"/>
+							</f:facet>
 							<h:outputText value="#{usuario.idade}"/>
 						</p:column>
-						<p:column headerText="Descrição">
+						<p:column headerText="">
+						<f:facet name="header">
+								<h:outputText style="color:black;" value="Login"/>
+							</f:facet>
 							<h:outputText value="#{usuario.login}"/>
 						</p:column>
 							
 					</h:dataTable>
                     
                     
-                    </p:panelGrid>
+                    </h:panelGrid>
             </p:panel>
         </p:tab>
  
         <p:tab id="servicos" title="Tipos de serviços">
             <p:panel header="Lista de serviços" style="background-color:#FFDD44">
                	
-               	    <p:panelGrid columns="1">
-                    	<h:dataTable emptyMessage="Você não tem grupos no momento!" value="#{servicoController.ListaServicos()}" var="servico">
+               	    <h:panelGrid bgcolor="#5577AA" cellpadding="20px" columns="2"> 
+               	    
+                    	<h:dataTable emptyMessage="Você não tem grupos no momento!" value="#{servicoController.listaServico}" var="servico">
 						
-						<p:column headerText="Usuario">
-							<h:outputText value="#{servico.usuario.getNome}"/>
-						</p:column>
-						
-						<p:column headerText="Descrição">
-							<h:outputText value="#{servico.descricao}"/>
-						</p:column>
+							<p:column headerText="">
+								<f:facet name="header">
+									<h:outputText style="color:black;" value="Nome"/>
+								</f:facet>
+								<h:outputText value="#{servico.nome}"/>
+							</p:column>
+							
+							<p:column headerText="">
+							<f:facet name="header">
+									<h:outputText style="color:black;" value="Descrição"/>
+								</f:facet>
+								<h:outputText value="#{servico.descricao}"/>
+							</p:column>
 						
 							
-					</h:dataTable>
+						</h:dataTable>
                     
                     
-                    </p:panelGrid>
+                    </h:panelGrid>
             </p:panel>
         </p:tab>
  
@@ -71,24 +91,37 @@
         <p:tab id="grupos" title="Grupos">
             <p:panel header="Lista de grupos" style="background-color:#FFDD44">
                
+                  <h:panelGrid bgcolor="#5577AA" cellpadding="20px" cellspacing="30px" columns="4" > 
                    
                     <h:dataTable emptyMessage="Você não tem grupos no momento!" value="#{grupoController.listaGrupo}" var="grupo">
-						<p:column headerText="Grupo">
+						<p:column headerText="">
+						<f:facet name="header">
+								<h:outputText style="color:black;" value="Grupo"/>
+							</f:facet>
 							<h:outputText value="#{grupo.nome}" />
 						</p:column>
 						
-						<p:column headerText="Moderador">
+						<p:column headerText="">
+						<f:facet name="header">
+								<h:outputText style="color:black;" value="Moderador"/>
+							</f:facet>
 							<h:outputText value="#{grupo.moderador}"/>
 						</p:column>
 						
-						<p:column headerText="Quantidade de Usuários">
+						<p:column headerText="">
+							<f:facet name="header">
+								<h:outputText style="color:black;" value="Qtd usuarios"/>
+							</f:facet>
 							<h:outputText value="#{grupo.qtdUsuario}"/>
 						</p:column>
-						<p:column headerText="Descrição">
+						<p:column headerText="">
+							<f:facet name="header">
+								<h:outputText style="color:black;" value="Descrição"/>
+							</f:facet>
 							<h:outputText value="#{grupo.descricao}"/>
 						</p:column>
 					</h:dataTable>
-                
+                </h:panelGrid>
             </p:panel>
         </p:tab>
     </p:wizard>

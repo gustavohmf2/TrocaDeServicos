@@ -23,14 +23,14 @@ public class PainelController {
 		
 	private ServicoRequisicao servicoR = new ServicoRequisicao();
 	private ServiceUsuario servicoU = new ServiceUsuario();
-	private Usuario usuario = new Usuario();
+	private Usuario user = new Usuario();
 	
 	private Requisicao requisicao = new Requisicao();
 	private boolean skip;
 	private Servico serv = new Servico();
 	
 	@SuppressWarnings("rawtypes")
-	DataModel listaGrupo;
+	DataModel listaGrupo ;
 	@SuppressWarnings("rawtypes")
 	DataModel listaUsuario;
 	
@@ -58,12 +58,12 @@ public class PainelController {
 		this.servicoR = servico;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Usuario getUser() {
+		return user;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setUser(Usuario usuario) {
+		this.user = usuario;
 	}
 	
 	public Requisicao getRequisicao() {
@@ -81,9 +81,34 @@ public class PainelController {
 	public void cadastrarInteresse(){
 		
 		requisicao.setData("10/02/2015");
-		requisicao.setUsuario(usuario);
+		requisicao.setUsuario(user);
 		requisicao.setIdRequisicao(1);
 		servicoR.adicionarRequisicao(requisicao);
+	}
+
+	public DataModel getListaGrupo() {
+		return listaGrupo;
+	}
+
+	public void setListaGrupo(DataModel listaGrupo) {
+		this.listaGrupo = listaGrupo;
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public DataModel getListaUsuario() {
+		
+		//List<Usuario> lista = servicoU.listarUsuarios();
+		
+		listaUsuario = new ListDataModel(servicoU.listarUsuarios());
+		if(listaUsuario == null){
+			
+			System.out.println("Error!");
+		}
+		return listaUsuario;
+	}
+
+	public void setListaUsuario(DataModel listaUsuario) {
+		this.listaUsuario = listaUsuario;
 	}
 
 	public boolean isSkip() {
@@ -104,13 +129,7 @@ public class PainelController {
         }
     }
     
-    @SuppressWarnings({ "rawtypes", "unchecked" })
-	public DataModel ListaUsuarios(){
-		
-		List<Usuario> lista = new ServiceUsuario().listarUsuarios();
-		listaGrupo = new ListDataModel(lista);
-		return listaGrupo;
-	}
+    
     
 
 

@@ -8,24 +8,22 @@
 
 <h:head>
 
-	<f:metadata>
-        <f:viewParam name="grupo" value="#{grupoController.grupo.nome}" />
-        <f:viewParam name="usuario" value="#{usuarioController.usuario.nome}" />
-    </f:metadata>
-
 </h:head> 
 
 <body style="background-color:#FFDD44"> 
 	<!-- Informacoes do usuario -->
 	<div style="padding-top:150px;position:absolute;">
 		
-		<p:panel header="#{usuarioController.usuario.nome}"  style="width:150px" footer="23 anos, Rio Grande do Norte">
+		<p:panel header="#{usuarioController.usuario.nome}"  style="width:150px" footer="#{usuarioController.usuario.idade} anos, Rio Grande do Norte">
 			<p:graphicImage width="120px" height="120px" library="img" name="user.png"/>
 		</p:panel>
 	</div>
+	<div style="margin-left:1350px;position:relative;">
+		<p:graphicImage width="40px" height="50px" library="img" name="logout.png" />
+	</div>
 	
 	<div style="height:100px;margin-left:200px;padding-top:150px;position:relative">
-			<p:panel header="#{grupoController.grupo.nome}"></p:panel>
+			<p:panel header="#{grupoController.grupoAcessado().nome}"></p:panel>
 	</div>
 	
 	<div style="height:400px;margin-left:200px;padding-top:0px;position:relative">	
@@ -47,7 +45,7 @@
 			<p:panel id="toggleable4" toggleable="true"  toggleSpeed="500" closeSpeed="500"  header="Participantes" style="background-color:#5577AA">
 			
 				<h:panelGrid columns="2" bgcolor="#5577AA">
-					<h:dataTable emptyMessage="Não há usuários!" rendered="#{grupoController.listaUsuario} != null}" value="#{grupoController.listaUsuario}" var="participante">
+					<h:dataTable emptyMessage="Não há usuários!" rendered="#{grupoController.listaUsuario != null}" value="#{grupoController.listaUsuario}" var="participante">
 							
 						<p:column >
 							<f:facet name="header">

@@ -5,13 +5,33 @@
 	    id="WebApp_ID" version="3.0">
 	    
   <display-name>TrocaDeTarefas</display-name>
-
+	
+	
+	<!-- Filtro para a navegação de páginas  -->
+	<filter>
+       <filter-name>IndexFiltro</filter-name>
+       <filter-class>br.com.TrocaDeTarefas.Filtros.IndexFiltro</filter-class>     
+   </filter>
+   
+   <filter-mapping>
+      <filter-name>IndexFiltro</filter-name>
+      <url-pattern>/views/*</url-pattern>
+  </filter-mapping>
+ 
+  <!-- Tempo para expirar a sessão -->
+  <session-config>
+      <session-timeout>20</session-timeout>
+   </session-config>
+   
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/applicationContext.xml</param-value>
 	</context-param>  
-  
-  
+  	 <!-- Mostra a situação da sessão -->
+  	<listener>
+  		<listener-class>br.com.TrocaDeTarefas.Filtros.SessionListener</listener-class>
+  	</listener>
+  	
     <listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
@@ -20,12 +40,7 @@
 	</listener>
   
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsf</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
   <servlet>

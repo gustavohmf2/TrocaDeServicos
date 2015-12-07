@@ -13,12 +13,12 @@ import br.com.TrocaDeTarefas.Model.Servico;
 @Service
 public class ServiceServico {
 	
-	private ServicoDAO dao;
+	private ServicoDAO dao = new ServicoDAO();
 	private String msgErro;
 	
 	public List<Servico> findALL(){
 			
-		return new ServicoDAO().listar();
+		return dao.listar();
 	}
 	
 	public void AtualizarServico(Servico serv)
@@ -34,7 +34,7 @@ public class ServiceServico {
 			msgErro = "Adicionado !";
 		}catch(Exception e){
 			
-			msgErro = "Não foi possível adicionar o serviço"+e.getMessage();
+			msgErro = "N�o foi possivel adicionar o servico"+e.getMessage();
 		}finally{
 			return msgErro;
 		}
