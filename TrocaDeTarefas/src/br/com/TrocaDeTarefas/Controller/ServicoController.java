@@ -7,6 +7,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
+import br.com.TrocaDeTarefas.Filtros.SessionContext;
 import br.com.TrocaDeTarefas.Model.Endereco;
 import br.com.TrocaDeTarefas.Model.Servico;
 import br.com.TrocaDeTarefas.Model.Usuario;
@@ -63,8 +64,8 @@ public class ServicoController {
     	
     	System.out.println("aqui");
     	
-    	servico.setUsuario(aux);
     	
+    	servico.setUsuario((Usuario) SessionContext.getInstance().getAtribute("usuario"));
     	servicoS.CadastrarServico(servico);
     	
     }

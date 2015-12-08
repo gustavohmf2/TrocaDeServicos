@@ -11,6 +11,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import org.primefaces.context.RequestContext;
+
+import br.com.TrocaDeTarefas.Filtros.SessionContext;
 import br.com.TrocaDeTarefas.Model.Avaliacao;
 import br.com.TrocaDeTarefas.Model.Servico;
 import br.com.TrocaDeTarefas.Model.Usuario;
@@ -25,7 +27,6 @@ public class ServicoMB implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private List<Servico> Tarefas;
 
-	private Usuario Usuarioativo;
 	private Avaliacao avaliacaouser = new Avaliacao();
 	private Servico servicoSelecionado;
 
@@ -39,13 +40,6 @@ public class ServicoMB implements Serializable {
 	public void SelecionarTarefa(Servico serv){		
 		servicoSelecionado = serv;
 	
-	}
-	public Usuario getUsuarioativo() {
-		return Usuarioativo;
-	}
-
-	public void setUsuarioativo(Usuario usuarioativo) {
-		Usuarioativo = usuarioativo;
 	}
 
 	public Avaliacao getAvaliacaouser() {
@@ -84,8 +78,8 @@ public class ServicoMB implements Serializable {
 			aux = serv.getParticipantes();
 		}
 
-		if (existUser(aux, Usuarioativo) == false) {
-			aux.add(Usuarioativo);
+		if (existUser(aux, (Usuario) SessionContext.getInstance().getAtribute("usuario")) == false) {
+			aux.add((Usuario) SessionContext.getInstance().getAtribute("usuario"));
 		}
 		serv.setParticipantes(aux);
 		new ServiceServico().AtualizarServico(serv);
@@ -112,14 +106,6 @@ public class ServicoMB implements Serializable {
 	}
 	@PostConstruct
 	public void init() {
-		Usuarioativo = new Usuario();
-		Usuarioativo.setNome("Quepardo");
-		Usuarioativo.setCpf("342323");
-		Usuarioativo.setEmail("Anderson@yahoo.com.br");
-		Usuarioativo.setIdade(23);
-		Usuarioativo.setLogin("Anderson");
-		Usuarioativo.setSenha("3456");
-		Usuarioativo.setTelefone("70251");
 		Tarefas = new ServiceServico().findALL();
 	}
 

@@ -35,9 +35,7 @@
 					<p:rating value="#{avaliazao.comentario.estrelas}"/>
 					<h:inputTextarea value="#{avaliazao.comentario.comentario}" style="height:100px" cols="50"/>			
 				</h:panelGrid>
-				<h:commandButton action="#{avaliazao.avaliar(servico.servicoSelecionado)}" value="Comentar">
-					<f:setPropertyActionListener value="#{servico.usuarioativo}" target="#{avaliazao.comentario.usuario}" />
-				</h:commandButton>
+				<h:commandButton action="#{avaliazao.avaliar(servico.servicoSelecionado)}" value="Comentar"/>
 			</h:panelGrid>
 	</h:form>
 	</body> 

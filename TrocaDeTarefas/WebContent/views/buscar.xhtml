@@ -16,38 +16,20 @@
         <p:tab id="usuario" title="Usuarios">
             <p:panel header="Lista de usuários" style="background-color:#FFDD44">
           	
-                    <h:panelGrid bgcolor="#5577AA" cellpadding="20px" columns="4" > 
-                    
-                    	<h:dataTable emptyMessage="Você não tem grupos no momento!" value="#{painelController.listaUsuario}" var="usuario">
-						<p:column id="Nome" headerText="Nome">
-							<f:facet name="header">
-								<h:outputText style="color:black;" value="Nome"/>
-							</f:facet>
-							<h:outputText style="color:black;"  value="#{usuario.nome}" />
-						</p:column>
-						
-						<p:column headerText="">
-							<f:facet name="header">
-								<h:outputText style="color:black;" value="Email"/>
-							</f:facet>
-							<h:outputText style="color:black;" value="#{usuario.email}"/>
-						</p:column>
-						
-						<p:column headerText="">
-							<f:facet name="header">
-								<h:outputText style="color:black;" value="Idade"/>
-							</f:facet>
-							<h:outputText value="#{usuario.idade}"/>
-						</p:column>
-						<p:column headerText="">
-						<f:facet name="header">
-								<h:outputText style="color:black;" value="Login"/>
-							</f:facet>
-							<h:outputText value="#{usuario.login}"/>
-						</p:column>
-							
-					</h:dataTable>
-                    
+                    <h:panelGrid  cellpadding="20px" style="width:100%" columns="4" > 
+                    	
+                    	<p:dataScroller value="#{painelController.listaUsuario}" var="usuario" chunkSize="10" mode="inline" scrollHeight="500">
+ 							<p:commandLink>
+        						<h:panelGrid columns="2">
+            						<h:graphicImage value="/resources/img/quepardo.jpg" style="width:200px"/> 
+ 									<h:panelGrid columns="1">
+ 										<h:outputText value="#{usuario.nome}" style="font-weight:bold"/>
+ 										<h:outputText value="#{usuario.email}" style="font-weight:bold"/>
+ 										<h:outputText value="#{usuario.idade}" style="font-weight:bold"/>
+        							</h:panelGrid>
+        						</h:panelGrid>
+        					</p:commandLink>
+    					</p:dataScroller>                
                     
                     </h:panelGrid>
             </p:panel>
@@ -56,29 +38,43 @@
         <p:tab id="servicos" title="Tipos de serviços">
             <p:panel header="Lista de serviços" style="background-color:#FFDD44">
                	
-               	    <h:panelGrid bgcolor="#5577AA" cellpadding="20px" columns="2"> 
-               	    
-                    	<h:dataTable emptyMessage="Você não tem grupos no momento!" value="#{servicoController.listaServico}" var="servico">
-						
-							<p:column headerText="">
-								<f:facet name="header">
-									<h:outputText style="color:black;" value="Nome"/>
-								</f:facet>
-								<h:outputText value="#{servico.nome}"/>
-							</p:column>
-							
-							<p:column headerText="">
-							<f:facet name="header">
-									<h:outputText style="color:black;" value="Descrição"/>
-								</f:facet>
-								<h:outputText value="#{servico.descricao}"/>
-							</p:column>
-						
-							
-						</h:dataTable>
-                    
-                    
-                    </h:panelGrid>
+               	    <p:dataGrid var="tarefa" value="#{servico.tarefas}" columns="3"
+        	rows="12" paginator="true" id="dataservicos" 
+        	paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+        	rowsPerPageTemplate="6,12,16">
+        
+            	<p:panelGrid id="tarefas" columns="1">
+                	<f:facet name="header">
+    			  		<h:outputText value="#{tarefa.nome}"/>            			
+    			  	</f:facet>        
+					
+					<h:panelGrid columns="1"  style="text-align:justify">
+						<p:commandLink action="#{servico.showAvaliacao()}">
+							<f:setPropertyActionListener value="#{tarefa}" target="#{servico.servicoSelecionado}" />  
+    			  			<h:graphicImage value="/resources/img/calourada.jpg" width="100%" height="200px"/>
+    			  		</p:commandLink>
+    			  	</h:panelGrid>
+    			  	
+    			  	
+    			  	<h:panelGrid columns="2" style="width:100%;text-align:center">
+    			  		<p:commandLink  title="Participar Desta Tarefa" style="text-align:center" onclick="PF('dlg1').show();" action="#{servico.participar(tarefa)}" >
+                   			<h:outputText value="Participar" style="text-align:center" />                   		
+                		</p:commandLink> 
+                		<p:commandLink action="#{servico.showDetalhes()}" title="Ver Detalhes Sobre Essa Tarefa" style="text-align:center"  >
+							<f:setPropertyActionListener value="#{tarefa}" target="#{servico.servicoSelecionado}" />
+                   			<h:outputText value="Detalhes" style="text-align:center" />                   		
+                		</p:commandLink> 
+                	</h:panelGrid>	
+                </p:panelGrid>
+                <p:resizable for="tarefas" minWidth="200" maxWidth="300" minHeight="200" maxHeight="200" />      	
+     
+
+                	
+                	<p:dialog header="Notificação" widgetVar="dlg1" minHeight="40" >
+    					<h:outputText value="Você agora está participando desta tarefa!" />
+					</p:dialog>
+    		
+    		</p:dataGrid>
             </p:panel>
         </p:tab>
  

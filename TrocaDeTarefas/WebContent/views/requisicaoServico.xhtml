@@ -34,10 +34,10 @@
 		<p:panel id="toggleable2" toggleable="true"  toggleSpeed="500" closeSpeed="500"  style="background-color:#FFDD44" header="Cadastrar seu Serviço!">
 			<h:form>
 				<h:panelGrid columns="2">
-					<p:outputLabel>Usuario</p:outputLabel>
-					<p:inputText value="#{servicoController.servico.usuario}"></p:inputText>
-					<p:outputLabel>descricao</p:outputLabel>
-					<p:inputText value="#{servicoController.servico.descricao}"></p:inputText>
+					<p:outputLabel>Nome</p:outputLabel>
+					<p:inputText value="#{servicoController.servico.nome}"></p:inputText>
+					<p:outputLabel>Descricao</p:outputLabel>
+					<h:inputTextarea value="#{servicoController.servico.descricao}" style="height:100px" cols="30"/>			
 					
 					<p:commandButton actionListener="#{servicoController.cadastroDeServico()}" value="Cadastrar"/>
 				</h:panelGrid>

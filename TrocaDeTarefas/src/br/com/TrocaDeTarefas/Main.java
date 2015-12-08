@@ -14,22 +14,12 @@ import br.com.TrocaDeTarefas.Model.Usuario;
 public class Main {
  
 	public static void main(String args[]){
-		Conversa conv = new Conversa();
-		conv.setDestinatario(new UsuarioDAO().buscarPorId("12345"));
+		Usuario user = new Usuario();
+		user.setNome("anderson araujo");
+		user.setCpf("123234345");
+		user.setLogin("anderson");
+		user.setSenha("anderson");
 		
-		ArrayList<Mensagem>list = new ArrayList<Mensagem>();
-		
-		Mensagem msn = new Mensagem();
-		msn.setEmissor(new UsuarioDAO().buscarPorId("12344333"));
-		msn.setMensagem("ei maluco");
-		list.add(msn);
-		
-		msn = new Mensagem();
-		msn.setEmissor(new UsuarioDAO().buscarPorId("12344333"));
-		msn.setMensagem("ei doido,responde ai");
-		list.add(msn);
-		
-		conv.setMensagens(list);
-		new ConversaDAO().adicionar(conv);
+		new UsuarioDAO().adicionar(user);
 	}
 }
