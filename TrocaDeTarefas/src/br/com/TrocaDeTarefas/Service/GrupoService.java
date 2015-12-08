@@ -183,5 +183,10 @@ public class GrupoService implements IGrupoService{
 			return msgError;
 		}
 	}
+	
+	public List<Grupo> listarMeusGrupos(Usuario usuario){
+		
+		return meuGrupo.listarGruposPorUsuario(usuario);
+	}
 
 }

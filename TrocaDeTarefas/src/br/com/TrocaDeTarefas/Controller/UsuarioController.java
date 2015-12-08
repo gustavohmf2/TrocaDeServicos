@@ -20,11 +20,22 @@ public class UsuarioController {
 	ServiceUsuario servicoUsuario = new ServiceUsuario();
 	SessionContext session;
 	Endereco endereco = new Endereco();
-	Usuario usuario = new Usuario();
+	Usuario newUsuario = new Usuario();
 	String msg = new String();
+	private Usuario usuario = new Usuario();
 	
 	
 	
+	public Usuario getNewUsuario() {
+		
+		return newUsuario;
+	}
+
+	public void setNewUsuario(Usuario newUsuario) {
+		
+		this.newUsuario = newUsuario;
+	}
+
 	public UsuarioController(){
 		
 		session = SessionContext.getInstance();
@@ -74,8 +85,7 @@ public class UsuarioController {
 
 
 	public void setUsuario(Usuario usuario) {
-		
-		
+	
 		this.usuario = usuario;
 	}
 
@@ -84,7 +94,7 @@ public class UsuarioController {
 	public void cadastrar(){
 		
 		usuario.setEndereco(endereco);
-		servicoUsuario.adicionarUsuario(usuario);
+		servicoUsuario.adicionarUsuario(newUsuario);
 		
 		FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage("Cadastro Realizado!"));

@@ -81,7 +81,9 @@ public class GrupoController {
 		listaGrupo = null;
 		
 		try{
-			List<Grupo> lista = new GrupoService().listarGrupos();
+			
+			Usuario userTemp = (Usuario) session.getAtribute("usuario");
+			List<Grupo> lista = service.listarMeusGrupos(userTemp);
 			listaGrupo = new ListDataModel(lista);
 			return listaGrupo;
 		}catch(ExceptionInInitializerError e){

@@ -15,15 +15,16 @@
 		<p style="font-family: fantasy;font-size: 30px;color: white">Troca de Serviços</p>
 	</div>
 
-	<p:dialog name="msg" rendered="#{msg}"></p:dialog>
-	<p:panel  header="Login" style="background-color:#FFDD44;height: 220px;width:380px;margin-top:210px;margin-left:480px">
+
+	<p:panel id="p2" header="Login" style="background-color:#FFDD44;height: 220px;width:380px;margin-top:210px;margin-left:480px">
+	<p:messages id="msgs"/>
 	  <h:form>
 		<h:panelGrid columns="2"> 
 			<p:outputLabel>Login</p:outputLabel>
 				<p:inputText name="login" value="#{loginController.login}"></p:inputText> 
 			<p:outputLabel>Senha</p:outputLabel>
 				<p:password name="senha" value="#{loginController.senha}"></p:password>
-			<p:commandButton action="#{loginController.validaLogin()}" value="Entrar" />
+			<p:commandButton action="#{loginController.validaLogin()}" value="Entrar" update="p2" icon="ui-icon-check"/>
 			<p:outputLabel>Não possui cadastro? <h:outputLink value="cadastro.jsf">Cadastre-se!</h:outputLink></p:outputLabel>
 		</h:panelGrid>
 	  </h:form>

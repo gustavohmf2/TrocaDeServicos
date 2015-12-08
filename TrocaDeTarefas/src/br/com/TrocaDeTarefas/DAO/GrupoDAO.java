@@ -1,5 +1,6 @@
 package br.com.TrocaDeTarefas.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -90,6 +91,22 @@ public class GrupoDAO extends GenericDAOImplements<Grupo> implements IGrupoDAO{
 		
 		mongoOperation.save(grupo);
 		
+	}
+	
+	public List<Grupo> listarGruposPorUsuario(Usuario usuario){
+		
+		List<Grupo> lista = mongoOperation.findAll(Grupo.class);
+		List<Grupo> listaTemp = new ArrayList<Grupo>();
+		for(Grupo g: lista){
+			
+			if(g.getUsuario().equals(usuario) || g.getModerador().equals(usuario.getCpf())){
+				
+				System.out.println(g.getNome()+" - "+g.getModerador());
+				 listaTemp.add(g);
+			}
+		}
+		
+		return listaTemp;
 	}
 	
 }
