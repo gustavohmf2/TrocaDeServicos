@@ -21,7 +21,7 @@
                     	<p:dataScroller value="#{painelController.listaUsuario}" var="usuario" chunkSize="10" mode="inline" scrollHeight="500">
  							<p:commandLink>
         						<h:panelGrid columns="2">
-            						<h:graphicImage value="/resources/img/quepardo.jpg" style="width:200px"/> 
+            						<h:graphicImage value="/resources/img/usuario.jpg" style="width:200px"/> 
  									<h:panelGrid columns="1">
  										<h:outputText value="#{usuario.nome}" style="font-weight:bold"/>
  										<h:outputText value="#{usuario.email}" style="font-weight:bold"/>
@@ -51,7 +51,7 @@
 					<h:panelGrid columns="1"  style="text-align:justify">
 						<p:commandLink action="#{servico.showAvaliacao()}">
 							<f:setPropertyActionListener value="#{tarefa}" target="#{servico.servicoSelecionado}" />  
-    			  			<h:graphicImage value="/resources/img/calourada.jpg" width="100%" height="200px"/>
+    			  			<h:graphicImage value="/resources/img/servico.redimensionado.jpg" width="100%" height="200px"/>
     			  		</p:commandLink>
     			  	</h:panelGrid>
     			  	
